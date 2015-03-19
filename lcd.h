@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#define HD44780_INTERFACE_MODE_8BIT                 0//set to 1 for 8bit interface. set to 0 for 4bit interface.
+
 #define HD44780_ENABLE_PULSE_WIDTH                  1 //ms
 
 #define HD44780_DB0                                 0x0001

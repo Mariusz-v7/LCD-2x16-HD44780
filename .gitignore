@@ -1,0 +1,6 @@
+build/
+cache/
+*.swp
+*.swo
+*~
+*.out

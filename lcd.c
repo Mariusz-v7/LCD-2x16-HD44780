@@ -134,3 +134,11 @@ void HD44780_start() {
     HD44780_instr(HD44780_CMD_RET_HOME);
 }
 
+void HD44780_new_character() {
+    uint8_t *chars = HD44780_additional_characters(), i = 0;
+    HD44780_instr(0x40);
+
+    while(chars[i] != 0xFF) HD44780_write_char(chars[i++]);
+
+    HD44780_instr(0x80);
+}

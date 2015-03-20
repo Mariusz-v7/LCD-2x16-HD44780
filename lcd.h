@@ -46,3 +46,4 @@ uint8_t HD44780_input_state(uint32_t pin);
 void HD44780_set_output_state(uint32_t pin, uint8_t state);
 void HD44780_set_pin_as_output(uint32_t pin);
 void HD44780_set_pin_as_input(uint32_t pin);
+uint8_t *HD44780_additional_characters();

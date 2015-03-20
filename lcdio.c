@@ -21,3 +21,15 @@ void HD44780_set_pin_as_output(uint32_t pin) {
 void HD44780_set_pin_as_input(uint32_t pin) {
     //this function should set passed pin to input mode
 }
+uint8_t *HD44780_additional_characters() {
+    //this array have to end with 0xFF
+    static uint8_t chars[] = {
+        //fill this array with special characters
+
+
+        // leave 0xFF as last element
+        0xFF
+    };                     
+
+    return chars;
+}

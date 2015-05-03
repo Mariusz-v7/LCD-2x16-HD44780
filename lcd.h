@@ -39,6 +39,7 @@ void HD44780_gotoxy(uint8_t x, uint8_t y);
 void HD44780_print(const char *string);
 void HD44780_wait_for_not_busy(void);
 void HD44780_start(void);
+void HD44780_reset(void);
 //Low level
 
 void HD44780_delay(uint32_t miliseconds);

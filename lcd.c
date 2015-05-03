@@ -114,12 +114,26 @@ void HD44780_wait_for_not_busy() {
     HD44780_output(HD44780_RW, 0);
     HD44780_output_mode(HD44780_DB0 | HD44780_DB1 | HD44780_DB2 | HD44780_DB3 | HD44780_DB4 | HD44780_DB5 | HD44780_DB6 | HD44780_DB7);
 }
+void HD44780_reset() {
+    uint8_t instruction = 0x30;
+    HD44780_output((uint32_t) instruction & 0xFF, 1);
+    HD44780_output((uint32_t) (~instruction) & 0xFF, 0);
 
+    int i = 0;
+    for (i = 0; i < 3; ++i) {
+        HD44780_output(HD44780_E, 1);
+        HD44780_delay(10);
+        HD44780_output(HD44780_E, 0);
+        HD44780_delay(10);
+    }
+}
 void HD44780_start() {
     HD44780_init();
     HD44780_delay(50);//>30ms
 
     HD44780_output(HD44780_RS | HD44780_RW | HD44780_E, 0);
+
+    HD44780_reset();
     //
     if (HD44780_INTERFACE_MODE_8BIT) HD44780_instr(HD44780_CMD_FUNCTION_SET | HD44780_CMD_FUNCTION_SET_8BIT | HD44780_CMD_FUNCTION_SET_DISPLAY_2_LINES);
     else {
